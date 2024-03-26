@@ -9,9 +9,8 @@
                 <h2 class="text-center mb-4">Авторизация</h2>
                 <form action="{% url "user:login" %}" method='post'>
                     {% csrf_token %}
-                    
-                    {% if form.non_field_errors %}
-                    <p>{{form.non_field_errors}}</p>
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value={{ request.GET.next }}>
                     {% endif %}
 
                     <div class="mb-3">
